@@ -1,0 +1,23 @@
+LESSON5: RESTARTING THE STOPPED CONTAINER
+
+CMD-CLI syntax: docker ps
+  -> FLAGS: 
+      -< --all : Will print all the containers that are running and stopped with details container id, image, command, created_time, status and port ( in which it is running )
+
+RESTARTING THE STOPPED CONTAINER:
+STEPS: 
+    1. run: docker ps --all 
+    2. get the <CONTAINER_ID>
+    3. docker start -a <CONTAINER_ID>
+
+LESSON6: REMOVE THE STOPPED CONTAINER
+TO DELETE ALL THE STOPPED CONTAINERS:
+STEPS: 
+    1. run docker system prune
+
+LESSON7: RETRIEVING THE LOGS OF A CONTAINER
+CMD-CLI syntax: docker logs <CONTAINER_ID>
+    -> If you want the output of the container:
+STEPS: 
+    1. run docker logs <CONTAINER_ID>
+

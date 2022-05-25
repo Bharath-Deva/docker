@@ -1,0 +1,37 @@
+LESSON7: RETRIEVING THE LOGS OF A CONTAINER
+If you want the output of the container:
+STEPS: 
+    1. run docker logs <CONTAINER_ID>
+
+LESSON8: STOPPING A CONTAINER
+see in the notes
+
+LESSON10: EXECUTING COMMANDS INSIDE THE CONTAINER
+    CMD-CLI syntax: docker exec -it <CONTAINER_ID> <COMMAND>
+        So by using the <COMMAND> we can open the cli and continue to enter our commands
+        FLAG IT: helps to enter the command through keyboard. Without this flag we can't enter the command
+
+LESSON11: WHY DO WE NEED IT FLAG?
+
+    Docker is running in LINUX Virtual Machine.Every process in Linux have three communication channels
+        1. STDIN: This is the things we type from keyboard to the process.
+        2. STDOUT: This is from process to the screen.
+        3. STDERR: This is error from the process to the screen.
+
+    IT flag is basically a combination of two flags -i -t
+        -i: This commands connects our terminal to the STDIN and STDOUT channel of the image.
+        -t: This commands prettifies the output from the image shown in the terminal through STDOUT.
+    
+LESSON11: GETTING A COMMAND PROMPT IN A CONTAINER:
+
+    CMD-CLI: docker exec -it <CONTAINER_ID> sh
+    So it runs the shell inside the container opening shell. Thus allows us to using shell inside the container
+
+LESSON12: SHELL CONCEPTS:
+    To Exit From the Shell, you need to press CTRL + D or use exit command
+
+LESSON14: CONTAINER ISOLATION:
+    Until we specifically create connection between containers they are isolated. They not even share file systems i.e A directory or file created in one container won't be present in other.
+
+
+

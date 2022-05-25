@@ -1,0 +1,22 @@
+DOCKER RUN COMMAND:
+lesoon1: [Notes]
+Docker Image (W.R.T docker cli) = FileSystem snapshot of Image ( stored in container ) + start up command ( that need to be executed in container after the creation which have the image )
+
+lesson 2
+syntax : docker run <IMAGE_NAME> <COMMAND>
+
+LESSON4: DOCKER LIFECYCLE
+docker run = docker create + docker start
+
+CMD-CLI syntax: docker create <IMAGE_NAME> 
+  -> It will create container for that image to run. So it will install the software for the image in the allocated memory of the container.
+  -> RETURN: It will return the container Id in which it started
+
+CMD-CLI syntax: docker start <CONTAINER_ID> : 
+  -> It will run the start up command for container which have included <CONTAINER_ID> in command.
+  -> RETURN: Normally it won't display the output of the startup command. If you need so you need to add "-a" flag to the command.
+                docker start -a <CONTAINER_ID>
+  Flags: 
+    -< a: will return the output of the command in cli.
+
+

@@ -1,0 +1,10 @@
+LESSON7: REBUILDS WITH CACHE
+  -> When you want create a new image which is an abstraction from the old image, try to add the "NEW COMMANDS FOR NEW IMAGE AS LAST AS POSSIBLE". So that docker uses the CACHE to build the new image from the old image.
+
+LESSON8: TAGGING AN IMAGE:
+  -> Tagging a docker means having a custom name for our image
+  CMD-CLI: docker build -t <docker-id>/<image-name>:<version> .
+
+LESSON9: MANUAL IMAGE GENERATION:
+  We can also create images manually. But we shouldn't do that
+

@@ -1,0 +1,38 @@
+LESSON1: CREATING DOCKER IMAGES:
+   Create Docker File (FEED INTO)-> Docker Client (FEED INTO)-> Docker Server (GIVES)-> Usable Image
+
+   Creating Docker File:
+      1. Specify a base image
+      2. Run some commands to install additional programs
+      3. Specify the start up command to run after a successful start of the container.
+
+LESSON1: CREATING DOCKER IMAGES:
+
+    STEP-1: Create a file with name Dockerfile and no extension.
+    STEP-2: Use an existing docker image as a base image:
+    We need something like os or another software so that we can install our image. "alpine" is kind of like that software which is going to help to install redis in our container 
+    command:  FROM alpine
+    IN CLI(background): Checks whether alpine is present in cache. If it is not there goes to docker hub and gets the alpine
+
+    STEP-3: Download and install a dependency
+    apk is a apache packer manage which is pre built in alpine. So using that we are downloading redis
+    command:  RUN apk add --update redis
+    IN CLI(background): To run this command, the docker takes FILE SYSTEM SNAPSHOT of alpine image ( since image = fs snapshot + start up command ) and places in the other container known as INTERMEDIATE CONTAINER. In this container the RUN apk add --update redis is ran as primary process (since apk is packet manager present in alpine it needs it's file system snapshot). Thus redis will be installed in this container.
+
+    STEP-4: Tell the image what to do after it starts
+    command:  CMD ["redis-server"]
+    IN CLI(background): To run this command the docker starts other intermediate container by taking the previous file system snapshot to this container and stops the previous intermediate container. Thus telling ["redis-server"] is the startup command to the newly created image. 
+
+    And finally kills the previous container gets the startup command and fs snapshot making a container with it and shows it's id as IMAGE
+
+    STEP-5: run  "docker build ."
+    command in terminal (with root that has docker file) : docker build .
+  
+LESSON5: THE BUILD PROCESS IN DETAIL:
+   (See one more time this video if the above steps aren't clear)
+
+   CMD: docker build .
+   the build command takes the docker file and returns image out of it.
+   The DOT (".") in the command specifies the BUILD CONTEXT
+
+   ** The docker basically creates creates an intermediate container taking the previous step file snapshot and making the container as image. Thus we will be getting a new image after every step based on the previous step by getting the fs snapshot of previous step and command **
